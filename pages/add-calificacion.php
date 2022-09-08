@@ -261,8 +261,6 @@ if (isset($_POST['submit'])) {
 								alert(r);
 							}
 						});
-
-
 						return false;
 					});
 				</script>

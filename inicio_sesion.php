@@ -45,7 +45,7 @@
 						<label for="inputpass" class="form-label">Contraseña</label><br>
 						<input type="password" class="form-control" id="inputpass" name="txtUsuario"><br>
 						<div class="form-group">
-						<button class="btn btn-primary" id="btnIngresar" >Ingresar</button> <a type="button" class="btn btn-success" href="estud.php">Registro</a></div>
+						<button class="btn btn-primary" id="btnIngresar" >Ingresar</button></div>
 						
 					</div>
 				</td>

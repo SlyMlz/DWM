@@ -49,7 +49,7 @@ class DbFunction
 
 			$stmt->bind_param('sssss', $cshort, $cfull, $cdate, $ruta, $nombre);
 			$stmt->execute();
-			echo "<script>alert('proyecto añadido exitosamente')</script>";
+			echo "proyecto añadido exitosamente";
 			//header('location:login.php');
 
 		}
@@ -60,10 +60,22 @@ class DbFunction
 
 		if ($cshort == "") {
 
-			echo "<script>alert('Select  Course Short Name')</script>";
+			echo "Título no puede estar vacio";
 		} else if ($cfull == "") {
 
-			echo "<script>alert('Select  Course Full Name')</script>";
+			echo "Modalidad no puede estar vacio";
+		} else if ($dat1 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($dat2 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($dat3 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($dat4 == "") {
+
+			echo "No puede estar vacio";
 		} else {
 
 
@@ -78,7 +90,7 @@ class DbFunction
 
 				$stmt->bind_param('ssssss', $cshort, $cfull, $dat1, $dat2, $dat3, $dat4);
 				$stmt->execute();
-				echo "<script>alert('Autor añadido correctamente')</script>";
+				echo 'Autor añadido correctamente';
 			}
 		}
 	}
@@ -89,6 +101,36 @@ class DbFunction
 		$db = Database::getInstance();
 		$mysqli = $db->getConnection();
 		$query = "SELECT * FROM tbl_proyecto ";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+
+	function showcalificacion()
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM calificacion";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+
+	function showcalificacion1($sid)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM calificacion where subid='" . $sid . "'";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+
+	function showregistro1($cid)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM usuario where idusuario='" . $cid . "'";
 		$stmt = $mysqli->query($query);
 		return $stmt;
 	}
@@ -109,6 +151,16 @@ class DbFunction
 		$db = Database::getInstance();
 		$mysqli = $db->getConnection();
 		$query = "SELECT * FROM contenido ";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+
+	function showregistro()
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM usuario ";
 		$stmt = $mysqli->query($query);
 		return $stmt;
 	}
@@ -140,10 +192,31 @@ class DbFunction
 
 		if ($cshort == "") {
 
-			echo "<script>alert('Select  proyecto Short Name')</script>";
+			echo "Título no puede estar vacio";
 		} else if ($cfull == "") {
 
-			echo "<script>alert('Select  proyecto Full Name')</script>";
+			echo "Modalidad no puede estar vacio";
+		} else if ($sub1 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($sub2 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($sub3 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($sub4 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($sub5 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($sub6 == "") {
+
+			echo "No puede estar vacio";
+		} else if ($sub7 == "") {
+
+			echo "No puede estar vacio";
 		} else {
 
 
@@ -158,7 +231,7 @@ class DbFunction
 
 				$stmt->bind_param('sssssssss', $cshort, $cfull, $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7);
 				$stmt->execute();
-				echo "<script>alert('Contenido guardado exitosamente')</script>";
+				echo 'Contenido guardado exitosamente';
 			}
 		}
 	}
@@ -168,10 +241,43 @@ class DbFunction
 
 		if ($cshort == "") {
 
-			echo "<script>alert('Select  proyecto Short Name')</script>";
+			echo "Título no puede estar vacio";
 		} else if ($cfull == "") {
 
-			echo "<script>alert('Select  proyecto Full Name')</script>";
+			echo "Modalidad no puede estar vacio";
+		} else if ($cal1 == "") {
+
+			echo "Introducción no puede estar vacio";
+		} else if ($cal2 == "") {
+
+			echo "Plantemaiento no puede estar vacio";
+		} else if ($cal3 == "") {
+
+			echo "Objetivos no puede estar vacio";
+		} else if ($cal4 == "") {
+
+			echo "Referentes no puede estar vacio";
+		} else if ($cal5 == "") {
+
+			echo "Metodología no puede estar vacio";
+		} else if ($cal6 == "") {
+
+			echo "Resultados no puede estar vacio";
+		} else if ($cal7 == "") {
+
+			echo "Conclusiones no puede estar vacio";
+		} else if ($cal8 == "") {
+
+			echo "Bibliografía no puede estar vacio";
+		} else if ($cal9 == "") {
+
+			echo "Nota no puede estar vacio";
+		} else if ($cal10 == "") {
+
+			echo "Aprobado no puede estar vacio";
+		} else if ($cal11 == "") {
+
+			echo "Laureada o puede estar vacio";
 		} else {
 
 
@@ -186,7 +292,7 @@ class DbFunction
 
 				$stmt->bind_param('sssssssssssss', $cshort, $cfull, $cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11);
 				$stmt->execute();
-				echo "<script>alert('Calificación agregada exitosamente')</script>";
+				echo 'Calificación agregada exitosamente';
 			}
 		}
 	}
@@ -346,6 +452,33 @@ class DbFunction
 		echo '</script>';
 	}
 
+	function edit_calificacion($cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11, $udate, $subid)
+	{
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "update calificacion set cal1=?,cal2=? ,cal3=?,cal4=?,cal5=?,cal6=?,cal7=?, cal8=?, cal9=?, cal10=?, cal11=?, update_date=? where subid=?";
+		$stmt = $mysqli->prepare($query);
+		$stmt->bind_param('ssssssssssssi', $cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11, $udate, $subid);
+		$stmt->execute();
+		echo '<script>';
+		echo 'alert("Calificacion Actualizada exitosamente")';
+		echo '</script>';
+	}
+
+	function edit_registro($nom1, $nom2, $ape1, $ape2, $dir, $barrio, $tel, $email,  $idusuario)
+	{
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "update usuario set nombre1=?, nombre2=?, apellido1=?, apellido2=?, direccion=?, barrio=?, telefonono=?, correo=? where idusuario=?";
+		$stmt = $mysqli->prepare($query);
+		$stmt->bind_param('ssssssssi', $nom1, $nom2, $ape1, $ape2, $dir, $barrio, $tel, $email, $idusuario);
+		$stmt->execute();
+		echo '<script>';
+		echo 'alert("Registro Actualizado exitosamente")';
+		echo '</script>';
+	}
+
+
 	function edit_std(
 		$cshort,
 		$cfull,
@@ -457,8 +590,31 @@ class DbFunction
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
-		echo "<script>alert('proyecto has been deleted')</script>";
+		echo "Proyecto eliminado exitosamente";
+		//para eliminar el contenido
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "delete from contenido where subid=?";
+		$stmt = $mysqli->prepare($query);
+		$stmt->bind_param('i', $id);
+		$stmt->execute();
+		echo "Proyecto eliminado exitosamente";
 		echo "<script>window.location.href='view-proyecto.php'</script>";
+	}
+
+	function del_registro($id)
+	{
+
+		//  echo $id;exit;
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "delete from usuario where idusuario=?";
+		$stmt = $mysqli->prepare($query);
+		$stmt->bind_param('i', $id);
+		$stmt->execute();
+		echo '<script>';
+		echo 'alert("Registro Eliminado exitosamente")';
+		echo '</script>';
 	}
 
 	function del_std($id)
@@ -470,8 +626,15 @@ class DbFunction
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param('i', $id);
 		$stmt->execute();
-		echo "<script>alert('One record has been deleted')</script>";
-		echo "<script>window.location.href='view-proyecto.php'</script>";
+		echo "Proyecto eliminado exitosamente";
+		//////////////
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "delete from contenido where subid=?";
+		$stmt = $mysqli->prepare($query);
+		$stmt->bind_param('i', $id);
+		$stmt->execute();
+		echo "<script>alert('contenido has been deleted')</script>";
 	}
 
 	function del_contenido($id)
@@ -484,8 +647,22 @@ class DbFunction
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param('i', $id);
 		$stmt->execute();
-		echo "<script>alert('contenido has been deleted')</script>";
-		// echo "<script>window.location.href='view-proyecto.php'</script>";
+		echo "Proyecto eliminado exitosamente";
+		echo "<script>window.location.href='view-proyecto.php'</script>";
+	}
+
+	function del_calificacion($id)
+	{
+
+		//echo $id;exit;
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "delete from calificacion where subid=?";
+		$stmt = $mysqli->prepare($query);
+		$stmt->bind_param('i', $id);
+		$stmt->execute();
+		echo "Calificacion eliminado exitosamente";
+		echo "<script>window.location.href='view-calificacion.php'</script>";
 	}
 }
 

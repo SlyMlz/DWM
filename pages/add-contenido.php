@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
 											<label>Resumen</label>
 										</div>
 										<div class="col-lg-6">
-											<input class="form-control" name="sub1">
+											<input class="form-control" name="sub1" required>
 										</div>
 									</div>
 									<br><br>
@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) {
 											<label>Planteamiento</label>
 										</div>
 										<div class="col-lg-6">
-											<input class="form-control" name="sub2">
+											<input class="form-control" name="sub2" required>
 										</div>
 									</div>
 									<br><br>
@@ -121,7 +121,7 @@ if (isset($_POST['submit'])) {
 											<label>Justificación</label>
 										</div>
 										<div class="col-lg-6">
-											<input class="form-control" name="sub3">
+											<input class="form-control" name="sub3" required>
 										</div>
 									</div>
 									<br><br>
@@ -131,7 +131,7 @@ if (isset($_POST['submit'])) {
 											<label>O. General</label>
 										</div>
 										<div class="col-lg-6">
-											<input class="form-control" name="sub4">
+											<input class="form-control" name="sub4" required>
 										</div>
 									</div>
 									<br><br>
@@ -141,7 +141,7 @@ if (isset($_POST['submit'])) {
 											<label>Metodología</label>
 										</div>
 										<div class="col-lg-6">
-											<input class="form-control" name="sub5">
+											<input class="form-control" name="sub5" required>
 										</div>
 									</div>
 									<br><br>
@@ -151,7 +151,7 @@ if (isset($_POST['submit'])) {
 											<label>Resultados</label>
 										</div>
 										<div class="col-lg-6">
-											<input class="form-control" name="sub6">
+											<input class="form-control" name="sub6" required>
 										</div>
 									</div>
 									<br><br>
@@ -161,7 +161,7 @@ if (isset($_POST['submit'])) {
 											<label>Bibliografía</label>
 										</div>
 										<div class="col-lg-6">
-											<input class="form-control" name="sub7">
+											<input class="form-control" name="sub7" required>
 										</div>
 									</div>
 									<br><br>
@@ -173,7 +173,7 @@ if (isset($_POST['submit'])) {
 
 										</div>
 										<div class="col-lg-6"><br><br>
-											<button class="btn btn-primary" id="btnContenido" name="submit">Guardar </button>
+											<button class="btn btn-primary" id="btnContenido" name="submit" >Guardar </button>
 										</div>
 
 									</div>
@@ -254,6 +254,8 @@ if (isset($_POST['submit'])) {
 			}
 
 			$('#btnContenido').on('click', function() {
+				
+				
 				let datos = $('#formContenido').serialize();
 				$.ajax({
 					type: 'POST',
@@ -263,7 +265,7 @@ if (isset($_POST['submit'])) {
 						alert(r);
 					}
 				});
-
+			
 				return false;
 			});
 		</script>

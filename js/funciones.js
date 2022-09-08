@@ -15,30 +15,39 @@
             }
         });
     });
+
     $('#botonautoest').on('click', function() {
+        var ok = 1;
         $('#form-registro input').each(function() {
             var val = $(this).val();
             $(this).removeClass('border-danger');
             if (val == '') {
                 $(this).addClass('border-danger');
-                alert('Ingrese dato');
+                alert('Ingrese dato por favor...');
+                ok = 0;
                 return false;
             }
         });
 
-        var datos = $('#form-registro').serialize();
-        $.ajax({
-            url: 'guarda.php',
-            type: 'POST',
-            data: datos,
-            success: function(r) {
-                if (r == 1) {
-                    window.location = 'guarda.php';
-                } else {
-                    alert(r);
+        if (ok == 1) {
+            var datos = $('#form-registro').serialize();
+            $.ajax({
+                url: 'guarda.php',
+                type: 'POST',
+                data: datos,
+                success: function(r) {
+                    if (r == 1) {
+                        window.location = 'guarda.php';
+                    } else {
+                        alert(r);
+                    }
                 }
-            }
-        });
+            });
+        }
+
     });
+
+
+
 
 })(jQuery);

@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="panel panel-default">
-							<div class="panel-heading">Autores</div>
+							<div data-toggle="validator" class="panel-heading">Autores</div>
 							<div class="panel-body">
 								<div class="row">
 									<form id="formAutores">
@@ -147,7 +147,7 @@ if (isset($_POST['submit'])) {
 
 										</div>
 										<div class="col-lg-6"><br><br>
-											<button id="btnAutores" class="btn btn-primary" name="submit">Guardar </button>
+											<button type="submit" id="btnAutores" class="btn btn-primary" name="submit">Guardar </button>
 										</div>
 
 									</div>
@@ -226,7 +226,9 @@ if (isset($_POST['submit'])) {
 			}
 
 			$('#btnAutores').on('click', function() {
+			   
 				let datos = $('#formAutores').serialize();
+					
 				$.ajax({
 					type: 'POST',
 					url: 'reg_autores.php',

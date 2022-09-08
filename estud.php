@@ -1,4 +1,4 @@
-		<!DOCTYPE php>
+<!DOCTYPE php>
 		<php>
 			
 <head>
@@ -43,7 +43,9 @@
 							<div id="registro">
 								<form class="row g-3 mt-3" id="form-registro" >
 									<h1>&nbsp; Registro  </h1>
-									
+									<? if ($nom1==""){
+										echo "Campo Vacio";
+									}else{ }?>
 									<div class="col-6 form-group">
 										<label for="nom1" class="form-label">Primer Nombre</label>
 										<input type="text" class="form-control" id="nom1" name="nom1">
@@ -94,6 +96,15 @@
 										<input type="password" class="form-control" id="pass" name="pass">
 									</div>
 
+									<div class="col-12 form-group">
+										<label for="rol" class="form-label">Tipo de Usuario</label><br>
+										<select name="rol" id="rol" class="form-control">
+											<option value="1">1. Administrador</option>
+											<option value="2">2. Docente</option>
+											<option value="3">3. Estudiante</option>
+										</select>
+									</div>
+									
 									<div class="d-grid gap-2 col-1 mx-auto col-2 form-group">
 										<button type="button" class="btn btn-primary" id="botonautoest" >Registar Datos</button>
 									</div>

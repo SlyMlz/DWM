@@ -7,6 +7,7 @@
     {
 		
 		$obj->del_proyecto(intval($_GET['del']));
+		$obj->del_contenido(intval($_GET['del']));
 		
 		
 	}
@@ -82,7 +83,8 @@
 													<td><?php echo htmlentities(strtoupper($res->cshort)); ?></td>
 													<td><?php echo htmlentities(strtoupper($res->cfull)); ?></td>
 													<td><?php echo htmlentities($res->cdate); ?></td>
-													<td>&nbsp;&nbsp;<a href="edit-proyecto.php?cid=<?php echo htmlentities($res->cid); ?>">
+													<td>&nbsp;&nbsp;
+														<a href="edit-proyecto.php?cid=<?php echo htmlentities($res->cid); ?>">
 															<p class="fa fa-edit"></p>
 														</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 														<a href="view-proyecto.php?del=<?php echo htmlentities($res->cid); ?>">

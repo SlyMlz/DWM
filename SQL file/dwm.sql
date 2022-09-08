@@ -37,7 +37,7 @@ CREATE TABLE `autores` (
   `dat4` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `dt_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `autores`
@@ -118,7 +118,7 @@ INSERT INTO `contenido` (`subid`, `cshort`, `cfull`, `sub1`, `sub2`, `sub3`, `su
 CREATE TABLE `rol` (
   `idrol` int NOT NULL,
   `descripcion` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `rol`
@@ -180,7 +180,7 @@ INSERT INTO `tbl_proyecto` (`cid`, `cshort`, `cfull`, `cdate`, `ruta`, `nombre`,
 
 CREATE TABLE `usuario` (
   `idusuario` int NOT NULL,
-  `codigo` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `codigo` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `nombre1` varchar(45) NOT NULL,
   `nombre2` varchar(45) NOT NULL,
   `apellido1` varchar(45) NOT NULL,
@@ -191,7 +191,7 @@ CREATE TABLE `usuario` (
   `correo` varchar(45) NOT NULL,
   `telefonono` varchar(45) NOT NULL,
   `id_rol` int NOT NULL DEFAULT '3'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`

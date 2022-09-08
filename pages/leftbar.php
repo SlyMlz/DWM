@@ -175,6 +175,9 @@ $id_rol = $_SESSION['rol'];
 									<li>
 										<a href="add-calificacion.php">Añadir Calificación</a>
 									</li>
+									<li>
+										<a href="view-calificacion.php">Visualizar Calificación</a>
+									</li>
 									<!--
 							<li>
 							<a href="view-contenido.php">Mirar Calificacion</a>
@@ -189,7 +192,10 @@ $id_rol = $_SESSION['rol'];
 									<a href="#"><i class="fa fa-archive fa-fw"></i>Gestión<span class="fa arrow"></span></a>
 									<ul class="nav nav-second-level">
 										<li>
-											<a href="#">Listar</a>
+											<a href="../estud.php">Registrar</a>
+										</li>
+										<li>
+											<a href="mirar_registro.php">Mirar Registro</a>
 										</li>
 									</ul>
 								</li>
