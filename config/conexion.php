@@ -1,7 +1,7 @@
 <?php 
     $hostname="localhost";
 	$username="root";
-	$password="root";
+	$password="1234";
 	$dbname="dwm";
     $_SESSION['urlin'] = '/DWM';
 	$mysqli = new mysqli($hostname, $username, $password, $dbname);

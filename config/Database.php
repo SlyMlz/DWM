@@ -4,7 +4,7 @@
 		private static $_instance; //The single instance
 		private $_host = "localhost";
 		private $_username = "root";
-		private $_password = "root";
+		private $_password = "1234";
 		private $_database = "dwm";
 		/*
 			Get an instance of the Database

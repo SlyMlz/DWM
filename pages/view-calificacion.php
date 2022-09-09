@@ -24,7 +24,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Mirar proyecto</title>
+	<title>Mirar calificación</title>
 	<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 	<link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
@@ -55,7 +55,7 @@
 					<div class="col-lg-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								Información básica
+								Visualizar calificación
 							</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
@@ -100,13 +100,15 @@
                                                     <td><?php echo htmlentities($res->cal9); ?></td>
                                                     <td><?php echo htmlentities($res->cal10); ?></td>
                                                     <td><?php echo htmlentities($res->cal11); ?></td>
-													<td>&nbsp;&nbsp;
-														<a href="edit-calificacion.php?sid=<?php echo htmlentities($res->subid); ?>">
-															<p class="fa fa-edit"></p>
-														</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<a href="view-calificacion.php?del=<?php echo htmlentities($res->subid); ?>">
-															<p class="fa fa-times-circle"></p>
-													</td>
+													<?php if ( $id_rol == 1 || $id_rol == 2) { ?>
+														<td>&nbsp;&nbsp;
+															<a href="edit-calificacion.php?sid=<?php echo htmlentities($res->subid); ?>">
+																<p class="fa fa-edit"></p>
+															</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<a href="view-calificacion.php?del=<?php echo htmlentities($res->subid); ?>">
+																<p class="fa fa-times-circle"></p>
+														</td>
+													<?php } ?>
 
 												</tr>
 

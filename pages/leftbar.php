@@ -168,23 +168,19 @@ $id_rol = $_SESSION['rol'];
 								</ul>
 							</li>
 							<?php } ?>
-							<?php if ($id_rol == 2 || $id_rol == 1) { ?>
+							<?php if ($id_rol == 3 || $id_rol == 1 || $id_rol == 2) { ?>
 							<li>
 								<a href="#"><i class="fa fa-archive fa-fw"></i>Calificación<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">
-									<li>
-										<a href="add-calificacion.php">Añadir Calificación</a>
-									</li>
+									<?php if ($id_rol == 1 || $id_rol == 2) { ?>
+										<li>
+											<a href="add-calificacion.php">Añadir Calificación</a>
+										</li>
+									<?php } ?>
 									<li>
 										<a href="view-calificacion.php">Visualizar Calificación</a>
 									</li>
-									<!--
-							<li>
-							<a href="view-contenido.php">Mirar Calificacion</a>
-							</li>
-						-->
 								</ul>
-
 							</li>
 							<?php } ?>
 							<?php if ($id_rol == 1) { ?>

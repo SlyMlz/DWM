@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
+	<title>Añadir calificación</title>
 	<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 	<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="panel panel-default">
-							<div class="panel-heading">Contenido</div>
+							<div class="panel-heading">Añadir calificación</div>
 							<div class="panel-body">
 								<form id="formCalificacion">
 									<div class="row">

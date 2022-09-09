@@ -452,17 +452,63 @@ class DbFunction
 		echo '</script>';
 	}
 
-	function edit_calificacion($cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11, $udate, $subid)
+	function edit_calificacion($cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11, $subid)
 	{
-		$db = Database::getInstance();
-		$mysqli = $db->getConnection();
-		$query = "update calificacion set cal1=?,cal2=? ,cal3=?,cal4=?,cal5=?,cal6=?,cal7=?, cal8=?, cal9=?, cal10=?, cal11=?, update_date=? where subid=?";
-		$stmt = $mysqli->prepare($query);
-		$stmt->bind_param('ssssssssssssi', $cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11, $udate, $subid);
-		$stmt->execute();
-		echo '<script>';
-		echo 'alert("Calificacion Actualizada exitosamente")';
-		echo '</script>';
+		if ($cal1 == "") {
+			echo '<script>';
+			echo 'alert("Introduccion no puede estar vacia")';
+			echo '</script>';
+		} else if ($cal2 == "") {
+			echo '<script>';
+			echo 'alert("Plantemaiento no puede estar vacio")';
+			echo '</script>';
+		} else if ($cal3 == "") {
+			echo '<script>';
+			echo 'alert("Objetivos no puede estar vacio")';
+			echo '</script>';
+		} else if ($cal4 == "") {
+			echo '<script>';
+			echo 'alert("Referentes no puede estar vacio")';
+			echo '</script>';
+		} else if ($cal5 == "") {
+			echo '<script>';
+			echo 'alert("Metodología no puede estar vacia")';
+			echo '</script>';
+		} else if ($cal6 == "") {
+			echo '<script>';
+			echo 'alert("Resultados no puede estar vacio")';
+			echo '</script>';
+		} else if ($cal7 == "") {
+			echo '<script>';
+			echo 'alert("Conclusiones no puede estar vacio")';
+			echo '</script>';
+		} else if ($cal8 == "") {
+			echo '<script>';
+			echo 'alert("Bibliografía no puede estar vacio")';
+			echo '</script>';
+		} else if ($cal9 == "") {
+			echo '<script>';
+			echo 'alert("Nota no puede estar vacio")';
+			echo '</script>';
+		} else if ($cal10 == "") {
+			echo '<script>';
+			echo 'alert("Aprobado no puede estar vacio")';
+			echo '</script>';
+		} else if ($cal11 == "") {
+			echo '<script>';
+			echo 'alert("Laureada o puede estar vacio")';
+			echo '</script>';
+		} else{
+			$db = Database::getInstance();
+			$mysqli = $db->getConnection();
+			$query = "update calificacion set cal1=?,cal2=? ,cal3=?,cal4=?,cal5=?,cal6=?,cal7=?, cal8=?, cal9=?, cal10=?, cal11=?  where subid=?";
+			$stmt = $mysqli->prepare($query);
+			$stmt->bind_param('sssssssssssi', $cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11, $subid);
+			$stmt->execute();
+			echo '<script>';
+			echo 'alert("Calificacion Actualizada exitosamente")';
+			echo '</script>';
+		}
 	}
 
 	function edit_registro($nom1, $nom2, $ape1, $ape2, $dir, $barrio, $tel, $email,  $idusuario)

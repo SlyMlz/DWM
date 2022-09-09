@@ -1,34 +1,16 @@
 <?php
     include('../config/DbFunction.php');
-    $subid=$_GET['sid'];
+    $subid=isset($_GET['sid']) ? $_GET['sid'] : $_POST['sid'] ;
     $obj=new DbFunction();   
     $rs=$obj->showcalificacion1($subid);
     $res=$rs->fetch_object(); 
     if(isset($_POST['submit'])){
-        $subid=$_GET['sid'];
-        
-        $obj->edit_calificacion($_POST['cal1'],$_POST['cal2'],$_POST['cal3'],$_POST['cal4'],$_POST['cal5'],$_POST['cal6'],$_POST['cal7'],$_POST['cal8'],$_POST['cal9'],$_POST['cal10'],$_POST['cal11'],$subid);
+        $sid = $_POST['sid'];
+        $obj->edit_calificacion($_POST['cal1'],$_POST['cal2'],$_POST['cal3'],$_POST['cal4'],$_POST['cal5'],$_POST['cal6'],$_POST['cal7'],$_POST['cal8'],$_POST['cal9'],$_POST['cal10'],$_POST['cal11'],$sid);
     }
-
-    /*
-
-    include('../config/DbFunction.php');
-    $obj = new DbFunction();
-    $rs = $obj->showproyecto();
-    $rs1 = $obj->showproyecto();
-
-    if (isset($_POST['submit'])) {
-
-        $obj = new DbFunction();
-
-        $obj->create_calificacion($_POST['proyecto_short'], $_POST['proyecto_full'], $_POST['cal1'], $_POST['cal2'], $_POST['cal3'], $_POST['cal4'], $_POST['cal5'], $_POST['cal6'], $_POST['cal7'], $_POST['cal8'], $_POST['cal9'], $_POST['cal10'], $_POST['cal11']);
-    }
-
-    */
 ?>
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 
 <head>
 
@@ -38,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title></title>
+    <title>Editar Calificación</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -69,11 +51,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Edit Course</div>
+                            <div class="panel-heading">Editar Calificacion</div>
                             <div class="panel-body">
-                                <form id="formCalificacion">
+                                <form method="post">
                                     <div class="row">
                                         <br><br>
+                                        <input type="hidden" name="sid" value="<?php echo isset($_GET['sid']) ?$_GET['sid'] :$_POST['sid']?>">
                                         <div class="form-group">
                                             <label>Introducción: Descripcion breve del tema de investigación.</label>
                                             <input class="form-control" name="cal1" id="cal1"
@@ -84,18 +67,6 @@
                                                 estudio. </label>
                                             <input  class="form-control" name="cal2" id="cal2"
                                                 value="<?php echo $res->cal2;?>">
-                                                <!--
-                                                    <div class="form-group">
-                                                        <div class="col-lg-4">
-                                                            <label>Date</label>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <input class="form-control" value="<?php echo date('d-m-Y');?>"
-                                                                readonly="readonly" name="udate">
-
-                                                        </div>
-                                                    </div>
-                                                -->
                                         </div>
                                         <div class="form-group">
 
@@ -149,24 +120,18 @@
                                                 name="cal11" id="cal11"
                                                 value="<?php echo $res->cal11;?>">
                                         </div>
+                                        <div class="form-group">
+                                            <div class="col-lg-6"><br><br>
+                                                <button type="submit" class="btn btn-primary" name="submit" >Editar </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
-								<div class="form-group">
-									<div class="col-lg-6"><br><br>
-										<button class="btn btn-primary" id="btnCalificaciones"  value="Update Calificacion" >Editar </button>
-									</div>
-								</div>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
         </div>
@@ -185,51 +150,6 @@
         <!-- Custom Theme JavaScript -->
         <script src="../dist/js/sb-admin-2.js" type="text/javascript"></script>
 
-        <script>
-        function courseAvailability() {
-
-            jQuery.ajax({
-                url: "course_availability.php",
-                data: 'cshort=' + $("#cshort").val(),
-                type: "POST",
-                success: function(data) {
-                    $("#course-availability-status").html(data);
-
-
-                },
-                error: function() {}
-            });
-        }
-
-        function coursefullAvail() {
-
-            jQuery.ajax({
-                url: "course_availability.php",
-                data: 'cfull=' + $("#cfull").val(),
-                type: "POST",
-                success: function(data) {
-                    $("#course-status").html(data);
-
-
-                },
-                error: function() {}
-            });
-        }
-        $('#btnCalificaciones').on('click', function() {
-            let datos = $('#formCalificacion').serialize();
-            $.ajax({
-                type: 'POST',
-                url: 'edit-calificacion.php',
-                data: datos,
-                success: function(r) {
-                    alert(r);
-                }
-            });
-
-
-            return false;
-        });
-        </script>
     </form>
 </body>
 
