@@ -105,6 +105,27 @@ class DbFunction
 		return $stmt;
 	}
 
+	function showproyecto1($cid)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM tbl_proyecto  where cid='" . $cid . "'";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+
+	function showaut($subid)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM autores  where subid='" . $subid . "'";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+	
+
 	function showcalificacion()
 	{
 
@@ -135,12 +156,12 @@ class DbFunction
 		return $stmt;
 	}
 
-	function showproyecto1($cid)
+	function showautores()
 	{
 
 		$db = Database::getInstance();
 		$mysqli = $db->getConnection();
-		$query = "SELECT * FROM tbl_proyecto  where cid='" . $cid . "'";
+		$query = "SELECT * FROM autores ";
 		$stmt = $mysqli->query($query);
 		return $stmt;
 	}
@@ -151,6 +172,16 @@ class DbFunction
 		$db = Database::getInstance();
 		$mysqli = $db->getConnection();
 		$query = "SELECT * FROM contenido ";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+
+	function showcont($sid)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM contenido where subid='$sid' ";
 		$stmt = $mysqli->query($query);
 		return $stmt;
 	}
@@ -185,6 +216,18 @@ class DbFunction
 		$stmt = $mysqli->query($query);
 		return $stmt;
 	}
+
+	function showCourse1($cid)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM tbl_proyecto  where cid='" . $cid . "'";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+
+
 
 
 	function create_contenido($cshort, $cfull, $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7)
@@ -422,33 +465,46 @@ class DbFunction
 	}
 
 
-	function edit_proyecto($cshort, $cfull, $udate, $id)
+	function edit_proyecto($cshort, $cfull, $cdate, $ruta, $nombre, $cid)
 	{
 
 		$db = Database::getInstance();
 		$mysqli = $db->getConnection();
 		//echo $cshort.$cfull.$udate.$id;exit;
-		$query = "update tbl_proyecto set cshort=?,cfull=? ,update_date=? where cid=?";
+		$query = "UPDATE tbl_proyecto set cshort=?,cfull=? ,cdate=? ,ruta=? ,nombre=? where cid=?";
 		$stmt = $mysqli->prepare($query);
-		$stmt->bind_param('sssi', $cshort, $cfull, $udate, $id);
+		$stmt->bind_param('sssssi', $cshort, $cfull, $cdate, $ruta, $nombre, $cid);
 		$stmt->execute();
 		echo '<script>';
-		echo 'alert("proyecto Updated Successfully")';
+		echo 'alert("Proyecto actualizado con exito")';
 		echo '</script>';
 	}
 
-
-	function edit_contenido($sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7, $udate, $id)
+    function edit_actores($dat1, $dat2, $dat3, $dat4, $subid)
 	{
 
 		$db = Database::getInstance();
 		$mysqli = $db->getConnection();
-		$query = "update contenido set sub1=?,sub2=? ,sub3=?,sub4=?,sub5=?,sub6=?,sub7=?,update_date=? where subid=?";
+		//echo $cshort.$cfull.$udate.$id;exit;
+		$query = "update autores set dat1=? ,dat2=? , dat3=?, dat4=?  where subid=?";
 		$stmt = $mysqli->prepare($query);
-		$stmt->bind_param('ssssssi', $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7, $udate, $id);
+		$stmt->bind_param('ssssi', $dat1, $dat2, $dat3, $dat4, $subid);
 		$stmt->execute();
 		echo '<script>';
-		echo 'alert("contenido Updated Successfully")';
+		echo 'alert("Autor actualizado con exito")';
+		echo '</script>';
+	} 
+	function edit_contenido($sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7,  $id)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "update contenido set sub1=?,sub2=? ,sub3=?,sub4=?,sub5=?,sub6=?,sub7=? where subid=?";
+		$stmt = $mysqli->prepare($query);
+		$stmt->bind_param('sssssssi', $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7,  $id);
+		$stmt->execute();
+		echo '<script>';
+		echo 'alert("Contenido actualizado con exito")';
 		echo '</script>';
 	}
 
@@ -636,15 +692,7 @@ class DbFunction
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
-		echo "Proyecto eliminado exitosamente";
-		//para eliminar el contenido
-		$db = Database::getInstance();
-		$mysqli = $db->getConnection();
-		$query = "delete from contenido where subid=?";
-		$stmt = $mysqli->prepare($query);
-		$stmt->bind_param('i', $id);
-		$stmt->execute();
-		echo "Proyecto eliminado exitosamente";
+		echo "<script>alert('Eliminando información básica del proyecto')</script>";
 		echo "<script>window.location.href='view-proyecto.php'</script>";
 	}
 
@@ -686,14 +734,13 @@ class DbFunction
 	function del_contenido($id)
 	{
 
-		//echo $id;exit;
 		$db = Database::getInstance();
 		$mysqli = $db->getConnection();
 		$query = "delete from contenido where subid=?";
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param('i', $id);
 		$stmt->execute();
-		echo "Proyecto eliminado exitosamente";
+		echo "<script>alert('Eliminando contenido del proyecto')</script>";
 		echo "<script>window.location.href='view-proyecto.php'</script>";
 	}
 
@@ -709,6 +756,19 @@ class DbFunction
 		$stmt->execute();
 		echo "Calificacion eliminado exitosamente";
 		echo "<script>window.location.href='view-calificacion.php'</script>";
+	}
+
+	function del_autores($id)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "delete from autores where subid=?";
+		$stmt = $mysqli->prepare($query);
+		$stmt->bind_param('i', $id);
+		$stmt->execute();
+		echo "<script>alert('Eliminando autor con exito')</script>";
+		echo "<script>window.location.href='view-autores.php'</script>";
 	}
 }
 

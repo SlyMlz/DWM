@@ -106,7 +106,7 @@
 														<td><?php echo htmlentities(strtoupper($res->sub6));?></td>
 														
 														<td>&nbsp;&nbsp;
-															<a href="edit-sub.php?sid=<?php echo htmlentities($res->subid);?>">
+															<a href="edit-contenido.php?sid=<?php echo htmlentities($res->subid);?>">
 																<p class="fa fa-edit"></p></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<a href="view-contenido.php?del=<?php echo htmlentities($res->subid); ?>"> 
 																<p class="fa fa-times-circle"></p></td>

@@ -135,6 +135,9 @@ $id_rol = $_SESSION['rol'];
 									<li>
 										<a href="view-proyecto.php">Mirar proyecto</a>
 									</li>
+									<li>
+										<a href="requisitos.php">Consultar requisitos</a>
+									</li>
 								</ul>
 							</li>
 							<?php } ?>
@@ -152,6 +155,7 @@ $id_rol = $_SESSION['rol'];
 										<a href="view-contenido.php">Mirar Contenido</a>
 									</li>
 									
+									
 								</ul>
 
 							</li>
@@ -163,6 +167,9 @@ $id_rol = $_SESSION['rol'];
 								<ul class="nav nav-second-level">
 									<li>
 										<a href="add-autores.php">Añadir autor</a>
+									</li>
+									<li>
+										<a href="view-autores.php">Mirar autor</a>
 									</li>
 
 								</ul>
