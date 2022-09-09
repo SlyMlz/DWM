@@ -63,7 +63,7 @@ $rs = $obj->showregistro();
 												<th>Nombres</th>
 												<th>Telefono</th>
 												<th>Correo</th>
-												<th>Opciones
+												<th> Opciones
 
 												</th>
 											</tr>
