@@ -136,7 +136,7 @@ $id_rol = $_SESSION['rol'];
 										<a href="view-proyecto.php">Mirar proyecto</a>
 									</li>
 									<li>
-										<a href="requisitos.php">Consultar requisitos</a>
+										<a href="../requisitos.php">Consultar requisitos</a>
 									</li>
 								</ul>
 							</li>
