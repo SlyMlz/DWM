@@ -5,14 +5,6 @@ $obj = new DbFunction();
 $rs = $obj->showproyecto();
 $rs1 = $obj->showproyecto();
 
-if (isset($_POST['submit'])) {
-
-	$obj = new DbFunction();
-
-	$obj->create_calificacion($_POST['proyecto_short'], $_POST['proyecto_full'], $_POST['cal1'], $_POST['cal2'], $_POST['cal3'], $_POST['cal4'], $_POST['cal5'], $_POST['cal6'], $_POST['cal7'], $_POST['cal8'], $_POST['cal9'], $_POST['cal10'], $_POST['cal11']);
-}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -64,7 +56,7 @@ if (isset($_POST['submit'])) {
 
 
 												<div class="col-lg-6">
-													<select class="form-control" name="proyecto_short" id="cshort" required="required">
+													<select class="form-control" name="cshort" id="cshort" required="required">
 														<option VALUE="">SELECT</option>
 														<?php while ($res = $rs->fetch_object()) { ?>
 
@@ -85,7 +77,7 @@ if (isset($_POST['submit'])) {
 												<label>Modalidad<span id="" style="font-size:11px;color:red">*</span></label>
 											</div>
 											<div class="col-lg-6">
-												<select class="form-control" name="proyecto_full" id="cfull" required="required">
+												<select class="form-control" name="cfull" id="cfull" required="required">
 													<option VALUE="">SELECT</option>
 													<?php while ($res1 = $rs1->fetch_object()) { ?>
 
@@ -103,7 +95,7 @@ if (isset($_POST['submit'])) {
 											<label>Introducción: Descripcion breve del tema de investigación.</label>
 
 
-											<input type="number" min="1" max="9" class="form-control" name="cal1">
+											<input type="number" min="1" max="9" class="form-control" name="cal1" id="cal1">
 
 										</div>
 										<div class="form-group">
@@ -111,7 +103,7 @@ if (isset($_POST['submit'])) {
 											<label> Planteamiento del problema: Descripcion del problema que soporta al estudio. </label>
 
 
-											<input type="number" min="1" max="9" class="form-control" name="cal2">
+											<input type="number" min="1" max="9" class="form-control" name="cal2" id="cal2">
 
 										</div>
 										<div class="form-group">
@@ -119,7 +111,7 @@ if (isset($_POST['submit'])) {
 											<label>Objetivos: Los objetivos son precisos y coherentes, conducen a la resolución del problema.</label>
 
 
-											<input type="number" min="1" max="9" class="form-control" name="cal3">
+											<input type="number" min="1" max="9" class="form-control" name="cal3" id="cal3">
 
 										</div>
 										<div class="form-group">
@@ -127,7 +119,7 @@ if (isset($_POST['submit'])) {
 											<label>Referentes teoricos: Explicacion breve de los principales aspectos teoricos.</label>
 
 
-											<input type="number" min="1" max="9" class="form-control" name="cal4">
+											<input type="number" min="1" max="9" class="form-control" name="cal4" id="cal4">
 
 										</div>
 										<div class="form-group">
@@ -135,51 +127,61 @@ if (isset($_POST['submit'])) {
 											<label>Metodologia: presentación del tipo, diseño, población y tecnicas.</label>
 
 
-											<input type="number" min="1" max="9" class="form-control" name="cal5">
+											<input type="number" min="1" max="9" class="form-control" name="cal5" id="cal5">
 
 										</div>
 										<div class="form-group">
 
 											<label>Resultados: los datos recolectados son acordes a los objetivos.</label>
 
-											<input type="number" min="1" max="9" class="form-control" name="cal6">
+											<input type="number" min="1" max="9" class="form-control" name="cal6" id="cal6">
 
 										</div>
 										<div class="form-group">
 
 											<label>Conclusiones: Descripción preciosa de los aspectos relevantes obtenidos en la investigación.</label>
 
-											<input type="number" min="1" max="9" class="form-control" name="cal7">
+											<input type="number" min="1" max="9" class="form-control" name="cal7" id="cal7">
 
 										</div>
 										<div class="form-group">
 
 											<label>Bibliografia: referencias bibliograficas pertinentes y actualizadas.</label>
 
-											<input type="number" min="1" max="9" class="form-control" name="cal8">
+											<input type="number" min="1" max="9" class="form-control" name="cal8" id="cal8">
 
 										</div>
 										<div class="form-group">
 
 											<label>Nota.</label>
 
-											<input type="number" min="1" max="9" class="form-control" name="cal9">
+											<input type="number" min="1" max="9" class="form-control" name="cal9" id="cal9">
 
 										</div>
 										<div class="form-group">
 
 											<label>Aprobado.</label>
 
-											<input type="text" placeholder="Por favor ingrese si o no." class="form-control" name="cal10">
+											<input type="text" placeholder="Por favor ingrese si o no." class="form-control" name="cal10" id="cal10">
 
 										</div>
 										<div class="form-group">
 
 											<label>Laureada.</label>
 
-											<input type="text" placeholder="Por favor ingrese si o no." class="form-control" name="cal11">
+											<input type="text" placeholder="Por favor ingrese si o no." class="form-control" name="cal11" id="cal11">
 
 										</div>
+										<br><br>
+
+											<div class="form-group">
+												<div class="col-lg-4">
+													<label>Anexo</label>
+												</div>
+												<div class="col-lg-6">
+													<input type="file" class="form-control" name="fileAnexoCal" id="fileAnexoCal">
+												</div>
+											</div>
 									</div>
 								</form>
 								<div class="form-group">
@@ -252,15 +254,37 @@ if (isset($_POST['submit'])) {
 					}
 
 					$('#btnCalificaciones').on('click', function() {
-						let datos = $('#formCalificacion').serialize();
-						$.ajax({
-							type: 'POST',
-							url: 'reg_calificacion.php',
-							data: datos,
-							success: function(r) {
-								alert(r);
-							}
-						});
+						if ($('#fileAnexoCal').val() == '') {
+							alert('Debe seleccionar un archivo');
+						} else {
+							let datos = new FormData();
+							datos.append('cshort', $('#cshort').val());
+							datos.append('cfull', $('#cfull').val());
+							datos.append('cal1', $('#cal1').val());
+							datos.append('cal2', $('#cal2').val());
+							datos.append('cal3', $('#cal3').val());
+							datos.append('cal4', $('#cal4').val());
+							datos.append('cal5', $('#cal5').val());
+							datos.append('cal6', $('#cal6').val());
+							datos.append('cal7', $('#cal7').val());
+							datos.append('cal8', $('#cal8').val());
+							datos.append('cal9', $('#cal9').val());
+							datos.append('cal10', $('#cal10').val());
+							datos.append('cal11', $('#cal11').val());
+							datos.append('fileAnexoCal', $('#fileAnexoCal')[0].files[0]);
+							$.ajax({
+								type: 'POST',
+								url: 'reg_calificacion.php',
+								contentType: false,
+								data: datos,
+								processData: false,
+								cache: false,
+								success: function(r) {
+									alert(r);
+								}
+							});
+
+						}
 						return false;
 					});
 				</script>

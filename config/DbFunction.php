@@ -279,35 +279,26 @@ class DbFunction
 		}
 	}
 
-	function create_calificacion($cshort, $cfull, $cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11)
+	function create_calificacion($cshort, $cfull, $cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11, $nombrecal, $rutacal)
 	{
 
 		if ($cshort == "") {
-
 			echo "Título no puede estar vacio";
 		} else if ($cfull == "") {
-
 			echo "Modalidad no puede estar vacio";
 		} else if ($cal1 == "") {
-
 			echo "Introducción no puede estar vacio";
 		} else if ($cal2 == "") {
-
 			echo "Plantemaiento no puede estar vacio";
 		} else if ($cal3 == "") {
-
 			echo "Objetivos no puede estar vacio";
 		} else if ($cal4 == "") {
-
 			echo "Referentes no puede estar vacio";
 		} else if ($cal5 == "") {
-
 			echo "Metodología no puede estar vacio";
 		} else if ($cal6 == "") {
-
 			echo "Resultados no puede estar vacio";
 		} else if ($cal7 == "") {
-
 			echo "Conclusiones no puede estar vacio";
 		} else if ($cal8 == "") {
 
@@ -320,20 +311,20 @@ class DbFunction
 			echo "Aprobado no puede estar vacio";
 		} else if ($cal11 == "") {
 
-			echo "Laureada o puede estar vacio";
+			echo "Laureada no puede estar vacio";
 		} else {
 
 
 			$db = Database::getInstance();
 			$mysqli = $db->getConnection();
-			$query = "insert into calificacion (cshort,cfull,cal1,cal2,cal3,cal4,cal5,cal6,cal7,cal8,cal9,cal10,cal11)values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			$query = "insert into calificacion (cshort,cfull,cal1,cal2,cal3,cal4,cal5,cal6,cal7,cal8,cal9,cal10,cal11,nombrecal,rutacal)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			if (false === $stmt) {
 
 				trigger_error("Error in query: " . mysqli_connect_error(), E_USER_ERROR);
 			} else {
 
-				$stmt->bind_param('sssssssssssss', $cshort, $cfull, $cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11);
+				$stmt->bind_param('sssssssssssssss', $cshort, $cfull, $cal1, $cal2, $cal3, $cal4, $cal5, $cal6, $cal7, $cal8, $cal9, $cal10, $cal11, $nombrecal, $rutacal);
 				$stmt->execute();
 				echo 'Calificación agregada exitosamente';
 			}
