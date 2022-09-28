@@ -107,9 +107,15 @@
 															</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 															<a href="view-calificacion.php?del=<?php echo htmlentities($res->subid); ?>">
 																<p class="fa fa-times-circle"></p>
+															</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															
 														</td>
 													<?php } ?>
-
+														<td>&nbsp;&nbsp;
+														<a href="downcalif.php?del=<?php echo htmlentities($res->subid); ?>">
+																<p class="fa fa-download"></p>
+															</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														</td>
 												</tr>
 
 											<?php $sn++;

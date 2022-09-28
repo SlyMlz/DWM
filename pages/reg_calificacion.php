@@ -14,7 +14,7 @@ $cal10 = $_POST['cal10'];
 $cal11 = $_POST['cal11'];
 $nombre = 'Anexo' . '_' . date('YmdGis') . '_' . $_FILES['fileAnexoCal']['name'];
 $nombrecal = strlen($nombre) >= 101 ? substr($nombre, 0, 100) : $nombre;
-$nombrecal = $nombre . '.pdf';
+$nombrecal = $nombre;
 $rutacal = 'anexos_calificacion/';
 $temporal = $_FILES['fileAnexoCal']['tmp_name'];
 if (!file_exists($rutacal)) {

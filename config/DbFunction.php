@@ -146,6 +146,16 @@ class DbFunction
 		return $stmt;
 	}
 
+	function descarga_cal($sid)
+	{
+
+		$db = Database::getInstance();
+		$mysqli = $db->getConnection();
+		$query = "SELECT * FROM calificacion where subid='" . $sid . "'";
+		$stmt = $mysqli->query($query);
+		return $stmt;
+	}
+
 	function showregistro1($cid)
 	{
 
